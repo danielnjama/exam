@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Test</title>
+</head>
+<body>
+    <style>
+        body{
+            background-color: darkslategrey;
+            margin-left:40px;
+            width: 80%;
+            
+        }
+        .test h1{
+            text-align: center;
+            text-decoration: underline;
+        }
+        .test{
+            background-color: darksalmon;
+            margin-top: 10px;
+            margin-left: 15%;
+            margin-right: 15%;
+            padding: 10px;
+            font-size: 18px;
+            font-family: 'Times New Roman', Times, serif;
+            border-radius: 5px;
+            width: 60%;
+        }
+        #button{
+            text-align: right;
+            
+            
+        }
+
+        .errors{
+            background-color: red;
+            margin-top: 10px;
+            margin-left: 15%;
+            margin-right: 15%;
+            padding: 10px;
+            font-size: 18px;
+            font-family: 'Times New Roman', Times, serif;
+            border-radius: 5px;
+            width: 60%;
+            text-align:center;
+
+        }
+        
+        .topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.topnav-right {
+  float: right;
+
+    </style>
+   <div class="topnav">
+  <a class="active" href="{% url 'index' %}">Home</a>
+  <!--<a href="#news">News</a>
+  <a href="#contact">Contact</a>-->
+  <div class="topnav-right">
+  {% if user.is_authenticated %}
+   <a href="{% url 'logout' %}">Hello {{user.first_name}} Logout</a>
+  {% else %}
+
+    <a href="{% url 'register' %}">Register</a>
+    <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+  </div>
+</div>
+
+
+
+
+
+    {% if message %}
+    <div class="errors">
+    
+    {{message}}
+    </div>
+    {% endif %}
+    <div class="test">
+    
+    <form action="get_marks" method="POST" >
+            {% csrf_token %}
+        <h1 style="text-align:center;">select the correct answer</h1>
+        <ol> 
+            <li>Which is the default alignment in word?</li>
+                    <input type="radio" name="q1" id="form" value="A">Left <br>
+                    <input type="radio" name="q1" id="form" value="B"> Right <br>
+                    <input type="radio" name="q1" id="form" value="C"> Center <br>
+                    <input type="radio" name="q1" id="form" value="D"> Justify <br> <br>
+                    
+            <li>Following is used for creating presentations.</li>
+                    <input type="radio" name="q2" id="form" value="A" id="">Word <br>
+                    <input type="radio" name="q2" id="form" value="B" id="">Access <br>
+                    <input type="radio" name="q2" id="form" value="C" id="">Excel <br>
+                    <input type="radio" name="q2" id="form" value="D" id="">Power Point <br> <br>
+            <li>File extension of word document is</li>
+                    <input type="radio" name="q3" id="form" value="A" id="">.xls <br>
+                    <input type="radio" name="q3" id="form" value="B" id="">.doc <br>
+                    <input type="radio" name="q3" id="form" value="C" id="">.word <br>
+                    <input type="radio" name="q3" id="form" value="D" id="">.jpeg <br> <br>
+            <li>The shortcut command of ‘save’ in word:</li>
+                    <input type="radio" name="q4" id="form" value="A" >Ctrl + A <br>
+                    <input type="radio" name="q4" id="form" value="B" >Ctrl + C <br>
+                    <input type="radio" name="q4" id="form" value="C" >Ctrl + V <br>
+                    <input type="radio" name="q4" id="form" value="D" >Ctrl + S <br> <br>
+
+            <li>Word processing package allow users to:</li>
+                    <input type="radio" name="q5" id="form" value="A" >Edit text  <br>
+                    <input type="radio" name="q5" id="form" value="B"  >Save text <br>
+                    <input type="radio" name="q5" id="form" value="C" >Print text <br>
+                    <input type="radio" name="q5" id="form" value="D" >All of the above <br> <br>
+            <li>Following font size is not supported by word:</li>
+                    <input type="radio" name="q6" id="form" value="A">15 <br>
+                    <input type="radio" name="q6" id="form" value="B"> 72.5 <br>
+                    <input type="radio" name="q6" id="form" value="C">102.89 <br>
+                    <input type="radio" name="q6" id="form" value="D">532 <br> <br>
+            <li>The number of ways you can save a word document, are</li>
+                    <input type="radio" name="q7" id="form" value="A">2 <br>
+                    <input type="radio" name="q7" id="form" value="B">3 <br>
+                    <input type="radio" name="q7" id="form" value="C">4 <br>
+                    <input type="radio" name="q7" id="form" value="D">5 <br><br>
+
+            <li>Which one is not among the following is not a microsoft office suite application </li> 
+                    <input type="radio" name="q8" value="A"> Excel<br>
+                    <input type="radio" name="q8" value="B">Word <br>
+                    <input type="radio" name="q8" value="C"> Power Point <br>
+                    <input type="radio" name="q8" value="D">JavaScript <br><br>
+                    
+            <li>Portrait and Landscape are ________</li>
+                    <input type="radio" name="q9" id="form" value="A">Paper size <br>
+                    <input type="radio" name="q9" id="form" value="B">Page layout          <br>          
+                    <input type="radio" name="q9" id="form" value="C">Page orientation <br>
+                    <input type="radio" name="q9" id="form" value="D">Page margin <br> <br>
+            <li>Values of normal margin (in inches) in ms-word is</li>
+                    <input type="radio" name="q10" id="form" value="A">left-0.5, right-0.5, top-0.5, bottom-0.5 <br>
+                    <input type="radio" name="q10" id="form" value="B">left-0.75, right-0.75, top-0.5, bottom-0.5 <br>
+                    <input type="radio" name="q10" id="form" value="C"> left-1, right-1, top-1, bottom-1 <br>
+                    <input type="radio" name="q10" id="form" value="D">left-1.5, right-1.5, top-1, bottom-1 <br> <br>
+                   
+
+        </ol>
+        
+        {% if user.is_authenticated %}
+        <div id="button"> <button class="btn btn-danger navbar-btn">SUBMIT ANSWERS</button></div>
+        {% else %}
+        <div id="button"> <button class="btn btn-danger navbar-btn"><a href="{% url 'login' %}">Login</a></button></div>
+        {% endif %}
+
+
+
+
+
+    </form>
+    </div>
+    <!--Answers: 1-(A), 2-(D), 3-(B), 4-(D), 5-(D), 6-(C), 7-(B), 8-(D), 9-(C), 10-(C)-->
+</body>
+</html>

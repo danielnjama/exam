@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Results</title>
+</head>
+<body>
+    <style>
+        body{
+            background-color: aliceblue;
+
+        }
+        .main{
+            margin-top: 120xp;
+            margin-left: 30%;
+            margin-right: 30%;
+            height: auto;
+            background-color: aquamarine;
+            border-radius:10px;
+
+
+        }
+        h2{
+            text-align: center;
+            margin-top: 2px;
+        }
+        p{
+            text-align: center;
+            font-size: 20px;
+            
+        }
+        table, th, td {
+        border: 1px solid black;
+            }
+    </style>
+    <div class="main">
+    {% if message %}
+    <h2>Hi {{user.first_name}}: <br></h2>
+    <p>You had previously submited your results: see your performance below</p>
+    {% else %}
+        <h2>Hi {{user.first_name}} Your scores are as in below: </h2>
+
+        <p style="color:red"> {{message}}</p>        
+        <p>You scored {{total_marks}} marks out of 10</p>
+        
+        
+        
+        <p>{{percentage}}%</p>
+        {% endif %}
+    </div>
+    <div class="main" style="" >
+
+    <table width="80%" style="margin: 0 auto; border:1px solid;text-align:center">
+    <caption>Students Performance in basic computer </caption>
+    <tr>
+        <th>Name</th>
+        <th>Marks</th>
+        <th>Percentage</th>
+        <th>Comment</th>
+    </tr>
+   {% for result in  results%}
+    <tr> 
+        <td>{{ result.name }}</td>
+         <td>{{result.marks }}</td>
+         <td>{{result.percentage}}%</td>
+         <td>{{ result.comment}}</td>
+    </tr>
+    {% endfor %}
+</table
+    </div>
+</body>
+</html>

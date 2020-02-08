@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>login</title>
+</head>
+<body>
+
+   
+    <style>
+    body{
+            margin: 0;
+            padding: 0;
+            font-family:sans-serif;
+            background-size: cover;
+            box-shadow: inset -4px -4px rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+    .login-box{
+     width: 280px;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%,-50%);
+     color: white;
+
+        }
+    .login-box h1{
+        float: left;
+        font-size: 40px;
+        border-bottom: 6px solid #4caf50;
+        margin-bottom: 50px;
+        padding: 13px 0;
+
+    }
+
+    .textbox{
+        width: 100%;
+        overflow: hidden;
+        font-size: 20px;
+        padding: 8px 0;
+        margin: 8px 0;
+        border-bottom: 1px solid #4caf50;
+
+    }
+    .textbox i{
+            width: 26px;
+            float: left;
+            text-align: center;
+    }
+
+    .textbox input{
+        border: none;
+        outline: none;
+        background: none;
+        color: white;
+        font-size: 18px;
+        width: 80%;
+        float: left;
+        margin: 0 10px;
+
+
+    }
+    .btn{
+        width: 100%;
+        background: none;
+        border: 2px solid #4caf50;
+        color: white;
+        padding: 5px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+    </style>
+
+    <div class="login-box">
+        <form action="login" method="post">
+        {% csrf_token%}
+        <h1>Login</h1>
+        <div class="textbox">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input type="text" name="username" placeholder="username" > <br>
+        </div>
+        <div class="textbox">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+            <input type="password" name="password" placeholder="password" >
+        </div>
+           <!-- {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{request.GET.next}}">
+            {% endif %}-->
+            <button class="btn">Login</button>
+
+        </form>
+        Don't have an account? <a href="{% url 'register' %}">Register</a>
+
+        <div>
+            {% for message in messages %}  
+            <h1 style="color: red; font-size: 14px;"> {{message}} </h1>
+               {% endfor %}
+        </div>
+</div>
+</body>
+</html>

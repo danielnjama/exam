@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration</title>
+</head>
+
+<style>
+    body{
+        background-size: cover;
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
+    .wrap{
+        max-width: 350px;
+        border-radius: 20px;
+        margin: auto;
+        background: rgba(0,0,0,0.8);
+        box-sizing: border-box;
+        padding: 40px;
+        color: #fff;
+        margin-top: 100px;
+
+    }
+    h2{
+        text-align: center;  
+    }
+
+    input[type=text],input[type=password],input[type=email]{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px 5px;
+        background-color: rgba(0,0,0,0.1);
+        outline: none;
+        border: none;
+        border-bottom: 1px dotted #fff;
+        color: #fff;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    input[type=submit]{
+        width: 100%;
+        padding: 10px 0;
+        margin-top: 30px;
+        outline: none;
+        border: none;
+        background: #60adde;
+        opacity: 0.7;
+        border-radius: 20px;
+        font-size: 20px;
+        color: #fff;
+        cursor: pointer; 
+    }
+    input[type=submit]:hover{
+            background: #003366;
+            opacity: 0.7;
+    }
+</style>
+
+<body>
+    <div class="wrap">
+        <h2>Sign Up Here</h2>
+    
+    <form action="register" method="POST">
+        {% csrf_token%}
+        <input type="text" name="first_name" placeholder="First Name" required>
+        <input type="text" name="last_name" placeholder="Last Name" required>
+        <input type="text" name="username" placeholder="Username" required> 
+        <input type="email" name="email" placeholder="email" required> 
+        <input type="password" name="password1" placeholder="Password" required>
+        <input type="password" name="password2" placeholder="Confirm Password" required>
+        <input type="submit">
+    </form>
+
+    
+    <div>
+            {% for message in messages %}  
+            <h1 style="color: red; text-align:center"> {{message}} </h1>
+               {%endfor%}
+       </div>
+    </div>
+
+</body>
+</html>
